@@ -1,0 +1,125 @@
+<div class="container-login100-form-btn">
+    <div class="wrap-login100-form-btn" style="border-radius: 0%;">
+        <div class="login100-form-bgbtn"></div>
+        <button class="login100-form-btn" type="button" (click)="logout()">
+            Logout
+        </button>
+    </div>
+</div>
+<div class="limiter"> 
+    <div class="container-login100" style="background-image: url('../../../../assets/images/bg-01.jpg');">
+        
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 m-r-54">
+            <form  class="login100-form" autocomplete="off" >
+
+                <span class="login100-form-title p-b-49">
+                    Sabores Helado
+                </span>
+
+                <div class="wrap-input100 m-b-23">
+                    <span class="label-input100">{{'Todo el Año' | titlecase}}</span> 
+                    <div *ngFor="let sabor of sabores" class="flex2">
+                        <li class="fs">{{sabor.nombre | titlecase}}</li>
+                        <label  class="check center">
+                            <input type="checkbox" [checked]="sabor.check" (change)="change($event , sabor)" >
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+   
+                
+                <div class="text-right p-t-8 p-b-31"></div>
+                
+                <div class="container-login100-form-btn" *ngIf="ok==false">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        
+                            <button class="login100-form-btn modal-trigger" type="button" data-target="nuevoSabor">
+                                Agregar
+                            </button>
+                        
+                    </div>
+                </div>
+                <div class="container-login100-form-btn" *ngIf="ok==true">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="button" (click)="eliminarSeleccion()">
+                            Eliminar Seleccionado
+                        </button>
+                    </div>
+                </div>
+             
+            </form>
+        </div>
+
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 m-t-55">
+         <form [formGroup]=formPrecios>
+            <span class="login100-form-title p-b-49">
+                Precios
+            </span>
+
+            
+            <div formArrayName="articulos" >
+                <div class="wrap-input100 m-b-23" *ngFor="articulo of articulosArr.controls; let i =index">
+                    <span class="label-input100">{{precios[i].name}}</span>
+                    <input class="input100"
+                           type="number" 
+                           [formControlName]="i"
+                           placeholder="Ingrese Precio">
+                           <span class="focus-input100"></span>
+                </div>
+            </div>
+
+            
+           
+            
+            <div class="text-right p-t-8 p-b-31"></div>
+            
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn" [disabled]="formPrecios.pristine"(click)="guardarPrecios()">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+         </form>
+        </div>
+
+         
+
+
+        <!-- ventana modal nuevo Sabor -->
+
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 modal limiter" id="nuevoSabor">
+            <form  class="login100-form" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)=nuevoSabor()>
+
+                <span class="login100-form-title p-b-49">
+                    Nuevo Sabor
+                </span>
+
+                <div class="wrap-input100 m-b-23">
+                    <span class="label-input100">Nombre</span>
+                    <input class="input100"
+                           type="text" 
+                           formControlName="nombre"
+                           placeholder="Ingresa el sabor">
+                    <span class="focus-input100"></span>
+                </div>
+         
+                <div class="text-right p-t-8 p-b-31"></div>
+
+                <div class="container-login100-form-btn" *ngIf="ok==false">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+ 

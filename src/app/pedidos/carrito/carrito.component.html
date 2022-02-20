@@ -1,0 +1,75 @@
+<section class="carrito" id="carrito" >
+    <h1 class="carrito__title">Tu Pedido</h1>
+    <div *ngIf="carrito.length>0 else vacio;">
+        <ul class="carrito__precarga">
+            <a href="pedidos#eliminar" class="carrito__lista sabores__item" *ngFor="let art of carrito" (click)="eligeArt(art)"> 
+                <h5 class="carrito__lista--title">{{art.name}}</h5>
+                <li>Cantidad : {{art.cant}}</li>
+                <li *ngIf="art.name == '1 Kilo' || art.name == '1/4 Kilo' || art.name == '1/2 Kilo' " >Sabores: {{art.sabores | titlecase }}</li>
+                <li *ngIf="art.name == '1 Kilo' || art.name == '1/4 Kilo' || art.name == '1/2 Kilo' " >Salsas : {{art.salsas | titlecase}}</li>
+                <li *ngIf="art.name == 'Alfajor Helado' || art.name == 'Bombón Suizo' || art.name == 'Chocotorta' || art.name == 'Tiramisú' " >{{art.desc}}</li>
+                <li *ngIf="(art.name == '1 Kilo' || art.name == '1/4 Kilo' || art.name == '1/2 Kilo') else otros;" >Subtotal: ${{art.precio*art.cant}} + Salsas: ${{art.totalSalsas}}</li>
+                <ng-template #otros>
+                    <li >Subtotal: ${{art.precio*art.cant}}</li>
+                </ng-template>
+                
+            </a> 
+            <div class="carrito__subtotal__enviar">
+                
+                <h5 *ngIf="(carrito.length==1 && carrito[0].name=='1/4 Kilo') else totalB" class="carrito__subtotal" >Total: $ {{totalPedido}} + Envío </h5>
+                <ng-template #totalB>
+                    <h5 class="carrito__subtotal" >Total: $ {{totalPedido}} + Envío </h5>
+                </ng-template>
+                <a href="pedidos#enviar" class="carrito__enviar">Enviar</a>
+            </div>
+        </ul>
+    </div>
+    <ng-template #vacio>
+        <div class="carrito__precarga" >
+            <h4 class="center">Tu pedido está vacío</h4>
+        </div>
+    </ng-template>
+</section>
+
+ <!-- MODAL ELIMINAR -->
+ <section class="eliminar" id="eliminar">
+    <div class="eliminar__container">
+        <h4 class="eliminar--title" >{{artSelec.name}}</h4>
+        <h5 class="eliminar--title" >¿Sacar del pedido?</h5>
+        <a href="pedidos#" id="success" class="ventanaMod__boton--success" (click)="eliminardelPedido()"> <img src="../../assets/images/icons/agree.png " class="img_agree" alt=""> </a>
+        <a href="pedidos#" class="ventanaMod__close" (click)="resetInputs()" >X</a>
+    </div>
+</section>
+
+<!-- MODAL ENVIAR -->
+
+<section class="enviar" id="enviar">
+    <div class="enviar__container">
+
+        <form [formGroup]="miFormulario" class="enviar__form">
+            
+            <h5 class="enviar--title" >Tu local mas cercano:</h5>
+            <br>
+            <div class="flex">
+                <label>
+                    <input type="radio" formControlName="local" value="SAN JUAN 966"/>
+                    <span class="fuente-span" style="font-size: 20px;">San Juan 966</span>
+                </label>
+            </div> 
+            <br>
+            <div>
+                <label>
+                    <input type="radio" formControlName="local" value="JUJUY 2213"/>
+                    <span class="fuente-span" style="font-size: 20px;">Jujuy 2213</span>
+                  </label>
+            </div> 
+            <br><br>
+            <h5 class="enviar--title start" >Tu Dirección:</h5>
+            <input class="direccion browser-default" type="text" formControlName="direccion" [value]="miFormulario.value.direccion" />
+        </form>
+        
+        <a href="pedidos#" id="enviarPedido" class="ventanaMod__boton--success" (click)="armarWhatsapp()"> <img src="../../assets/images/icons/agree.png " class="img_agree" alt=""> </a>
+        <a href="pedidos#" class="ventanaMod__close" (click)="resetInputs()" >X</a>
+    </div>
+</section>
+

@@ -1,0 +1,32 @@
+<section class="carga" id="carga">
+    <div class="carga__container">
+        
+        <h3 class="carga__title"> MENU </h3>
+        <div class="carga__galeria">
+
+            
+            <figure class="galeria_picture" *ngFor="let item of galeria; let i=index;">
+                
+                <img src="{{fotos[i]}}" class="galeria__img" alt="">
+                
+                <a href="pedidos#ventanaModal" (click)="eligeArt(item)" >
+                    <div class="over">
+                        <div class="over__texts">
+                            <h3 class="over__title">{{item.name}}</h3>
+                            <div class="over__contain">
+                                <img src="../../assets/images/icons/price.png" class="over__price" alt=""/>
+                                <p class="over__parrafo">{{item.precio}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+            </figure>
+            
+            
+        </div>
+    </div>
+</section>
+
+<!-- VENTANA MODAL  ----------------------------------------------------------------------------------------------------->
+<app-modal></app-modal>

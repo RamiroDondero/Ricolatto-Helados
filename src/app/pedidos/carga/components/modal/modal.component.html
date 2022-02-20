@@ -1,0 +1,122 @@
+<section class="ventanaMod" id="ventanaModal">
+    <div class="ventanaMod__container">
+        <div class="ventanaMod__sabores" *ngIf="(artSelec.name =='1 Kilo')||(artSelec.name =='1/4 Kilo')||(artSelec.name =='1/2 Kilo')" >
+            <h4 class="ventanaMod__sabores--title">Sabores - Hasta 3</h4>
+            <div class="ventanaMod__sabores--lista">
+                <div class="" *ngFor="let sab of sabores" > 
+                    <label>
+                        <input type="checkbox" (change)="change($event,sab)" [checked]="sab.check" >
+                        <span class="fuente-span" style="font-size: 20px;">{{sab.nombre|titlecase}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+         <form [formGroup]="miFormulario" class="ventanaMod__form">
+                
+
+                <div class="ventanaMod__salsas--container" *ngIf="(artSelec.name =='1 Kilo')||(artSelec.name =='1/4 Kilo')||(artSelec.name =='1/2 Kilo')" >
+                    <h5 class="ventanaMod__salsas--title">Salsas - Las que quieras</h5>
+                    <div class="ventanaMod__salsas"*ngFor="let salsa of salsastemplate" >
+                        <label>
+                            <input class="ventanaMod__salsas--input" type="checkbox" [formControlName]="salsa.nombre">
+                            <span class="ventanaMod__salsas--span" style="font-size: 20px;">{{salsa.desc}}</span>
+                        </label>
+                        <li class="ventanaMod__salsas--li">+${{precioSalsas?.precio}}</li>
+                    </div>
+                </div>
+                
+            
+            <div class="ventanaMod__bombonSuizo" *ngIf=" artSelec.name == 'Bombón Suizo' " >
+                <div class="ventanaMod__bombonSuizo--container">
+                    <h4 class="ventanaMod__bombonSuizo--title" >Bombón Suizo</h4>    
+                <br>
+                    <div class="ventanaMod__bombonSuizo--text">
+                        <div class="flex">
+                            <label>
+                                <input type="radio" formControlName="BombonUnidad" value="Caja x 6"/>
+                                <span class="fuente-span" style="font-size: 20px;"> Unidadesx6</span>
+                              </label>
+                              <li class="ventanaMod__salsas--li" >${{precioBombones[0].precio}}</li>
+                        </div> 
+                        <br>
+                        <div class="flex ventanaMod__bombonSuizo--desc">
+                            <label>
+                                <input type="radio" formControlName="BombonUnidad" value="Unidad"/>
+                                <span class="fuente-span" style="font-size: 20px;">Unidad</span>
+                              </label>
+                              <li class="ventanaMod__salsas--li" >${{precioBombones[1].precio}}</li>
+                        </div> 
+                    </div>
+                    <div class="contador__container">
+                        <button class="contador" (click)="difCant()" >-</button>
+                        <input class="cantidad browser-default" type="text" formControlName="contador" [value]="miFormulario.value.contador"/>
+                        <button class="contador" (click)="sumaCant()" >+</button>
+                    </div>   
+                </div>
+            </div>
+
+
+            <div class="ventanaMod__AlfajorHelado" *ngIf=" artSelec.name == 'Alfajor Helado' " >
+                <div class="ventanaMod__AlfajorHelado--container">
+                        <h4 class="ventanaMod__alfajor--title" >Alfajor Helado</h4>
+                    <br>
+                    <div class="ventanaMod__alfajor--text">
+                        <div ngClass="ventanaMod__alfajor--desc" class="row" *ngFor="let sabor of saborestemplate">
+                            <label>
+                            <input type="radio"  formControlName="Alfsabor" [value]="sabor.nombre"/>
+                            <span class="fuente-span" style="font-size: 20px;">{{sabor.desc}}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="contador__container">
+                        <button class="contador" (click)="difCant()" >-</button>
+                        <input class="cantidad browser-default" type="text" formControlName="contador" [value]="miFormulario.value.contador" />
+                        <button class="contador" (click)="sumaCant()" >+</button>
+                    </div>
+                </div>                  
+            </div>
+
+            <div class="ventanaMod__chocotorta" *ngIf="artSelec.name == 'Chocotorta'">
+                <div class="ventanaMod__chocotorta--container">
+                    <h4 class="ventanaMod__chocotorta--title">Chocotorta Helada</h4>
+                    <li class="ventanaMod__chocotorta--desc">Chica (8 Porciones)</li>
+                    <div class="contador__container">
+                        <button class="contador" (click)="difCant()" >-</button>
+                        <input class="cantidad browser-default" type="text" formControlName="contador" [value]="miFormulario.value.contador" />
+                        <button class="contador" (click)="sumaCant()" >+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ventanaMod__tiramisu" *ngIf="artSelec.name == 'Tiramisú'">
+                <div class="ventanaMod__tiramisu--container">
+                    <h4 class="ventanaMod__tiramisu--title">Torta Tiramisú</h4>
+                    <li class="ventanaMod__tiramisu--desc"> 10 Porciones </li>
+                    <div class="contador__container">
+                        <button class="contador" (click)="difCant()" >-</button>
+                        <input class="cantidad browser-default" type="text" formControlName="contador" [value]="miFormulario.value.contador" />
+                        <button class="contador" (click)="sumaCant()" >+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ventanaMod_Limon-cucurucho" *ngIf="artSelec.name == 'Cucurucho' || artSelec.name == 'Galleta Limón'">
+                <div class="ventanaMod_Limon-cucurucho--container">
+                    <h4 class="ventanaMod__limonCucurucho--title" >{{artSelec.name}}</h4>
+                    <div class="contador__container">
+                        <button class="contador" (click)="difCant()" >-</button>
+                        <input class="cantidad browser-default" type="text" formControlName="contador" [value]="miFormulario.value.contador" />
+                        <button class="contador" (click)="sumaCant()" >+</button>
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+         </form>
+        <a href="pedidos#" id="success" class="ventanaMod__boton--success" (click)="agregaCarrito()"> <img src="../../assets/images/icons/agree.png " class="img_agree" alt=""> </a>
+        <a href="pedidos#" class="ventanaMod__close" (click)="resetInputs()" >X</a>
+    </div>
+</section>

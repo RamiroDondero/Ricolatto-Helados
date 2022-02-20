@@ -1,0 +1,206 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+.ventanaMod{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%); 
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: opacity 1s 1.5s;
+    pointer-events: none;
+    display: flex;
+}
+.ventanaMod:target{
+    opacity: 1;
+    pointer-events: unset;
+    transition-delay: 0s;   
+}
+.ventanaMod__container{
+    width: 90%;
+    height: 95vh;
+    padding: 20px 20px;
+    background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+    margin: auto;
+    border-radius: 25px;
+    position: relative;
+    transform: scale(0);
+    transition: transform 1s 1s, clip-path 1s;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    display:flex;
+    flex-wrap: wrap;
+    position: relative;   
+}
+.ventanaMod:target .ventanaMod__container{
+    transform: scale(1);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.ventanaMod__close{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #ce3e64;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 700;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 2em;
+    cursor: pointer;
+    text-decoration: none;
+}
+.ventanaMod__sabores{
+    width: 100%;
+    height: 50vh;
+    display: block;   
+}
+.ventanaMod__sabores--title{
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+.ventanaMod__sabores--lista{
+    width: 100%;
+    height: 50vh;
+    border: 1px solid whitesmoke;
+    overflow-y: scroll;
+    line-height: 2.5em;
+    background-color: rgba(255, 255, 255, 0.418);
+    border-radius: 10px;
+}
+.ventanaMod__salsas--container{
+    position: absolute;
+    bottom: 2.2em;
+}
+.ventanaMod__salsas--li{
+    list-style: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline;
+    line-height: 1.3em;
+    padding-left: 1em;
+}
+.ventanaMod__salsas{
+    display: flex;
+    line-height: 2.6em;
+}
+.ventanaMod__salsas--span{
+    color: black;
+    font-weight: bold;
+}
+.ventanaMod__salsas--title{
+    padding: 30px 0px 10px 0px;
+    font-weight: bold;
+}
+.ventanaMod__boton--success{
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    right: 1em;
+    bottom: 1em;
+    border: none;
+    border-radius: 2em;
+}
+.ventanaMod__form{
+    width: 100%;
+}
+.ventanaMod__bombonSuizo{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.ventanaMod__bombonSuizo--container{
+    margin:auto;
+}
+.ventanaMod__AlfajorHelado{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.ventanaMod__AlfajorHelado--container , .enviar__form{
+    margin: auto;
+}
+.ventanaMod__alfajor--text, .ventanaMod__bombonSuizo--text{
+    width: 75%;
+    margin: 0 auto 2.2em auto;
+}
+.ventanaMod__alfajor--desc, .ventanaMod__bombonSuizo--desc{
+   text-align: left;
+   margin-bottom: 1.5em;
+}
+.ventanaMod__chocotorta, .ventanaMod__tiramisu , .ventanaMod_Limon-cucurucho , .eliminar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.ventanaMod__chocotorta--container, .ventanaMod__tiramisu--container, .ventanaMod_Limon-cucurucho--container, .eliminar__container {
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+}
+.ventanaMod__chocotorta--title, .ventanaMod__tiramisu--title, .ventanaMod__alfajor--title, .ventanaMod__bombonSuizo--title,
+.ventanaMod__limonCucurucho--title , .eliminar--title , .enviar--title
+{
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.ventanaMod__chocotorta--desc , .ventanaMod__tiramisu--desc {
+    font-weight: bold;
+    list-style: none;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: large;
+}
+.contador__container{
+    text-align: center;
+    font-size: 2em;
+     
+}
+.cantidad{   
+    border:0;
+    background-color: transparent;
+    width: 30%;
+    text-align: center;
+    font-weight: bold;    
+}
+.contador{
+    font-weight: bold;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%); 
+    color: whitesmoke;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+}
+.img_agree{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    filter: drop-shadow(0 10px 15px black);
+}
+.fuente-span{
+    color: black;
+    font-weight: bold;
+}
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .8em;
+}
+.start{
+    text-align: left;
+}

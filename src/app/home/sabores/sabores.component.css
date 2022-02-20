@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.sabores{
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    background-color: #ffafbd;
+    padding: 0.1px;
+}
+.sabores__title{
+    font-size: 3em;
+    margin: 25px auto;
+    text-align: center;
+    /* border-top: 10px solid orange; */
+    width: 40%;
+    padding-top: 10px;
+    font-weight: inherit;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.sabores__lista{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 10%;
+    
+}
+.sabores__item{
+    /* text-align: center; */
+    font-size: 1.25em;
+    /* list-style: disc; */
+    list-style-image: url(../../../assets/images/icons/icecream.png);
+    list-style-position: inside;
+}
+
+@media screen and (max-width:820px){
+    .sabores__lista{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+@media screen and (max-width:650px){
+    .sabores__lista{
+        grid-template-columns: 1fr;
+        padding-left: 15%;
+    }
+}

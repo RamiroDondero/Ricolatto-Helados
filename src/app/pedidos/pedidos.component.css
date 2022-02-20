@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+
+.pedidos{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
+.icono{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em; 
+    height: 5em;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+    position: fixed;
+    right:10px;
+    bottom: 10px;
+    border-radius: 50%;
+    padding: 20px;
+    
+}
+
+.icono_carrito{
+    width: 100%;
+    height: 100%;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5em;
+    height: 5em;
+    background-color: transparent;
+    position: fixed;
+    left:10px;
+    top: 10px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+
+.intro{
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+    opacity: 1;
+    z-index: 20;
+    pointer-events: none;
+    animation: intro 1s 1s ease forwards;
+}
+
+.intro_logo{
+    display: block;
+    width: 25%;
+    margin: auto;;
+}
+
+@keyframes intro{
+    to{
+        opacity: 0;
+    }
+}
